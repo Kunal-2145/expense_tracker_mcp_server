@@ -3,7 +3,7 @@ from pathlib import Path
 
 from fastmcp import FastMCP
 
-mcp = FastMCP(name="DEMO")
+mcp = FastMCP(name="Expense Tracker", instructions="A simple expense tracker tool.")
 DB_PATH = Path(__file__).resolve().parents[2] / "expense_tracker.db"
 
 def init_db():
@@ -102,7 +102,7 @@ def delete_expense(expense_id: int) -> None:
 
 def main():
     init_db()
-    mcp.run(transport="stdio")
+    mcp.run(transport="http", host="0.0.0.0", port=8000)
 
 
 if __name__ == "__main__":
